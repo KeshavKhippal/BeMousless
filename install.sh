@@ -46,7 +46,8 @@ if [[ ! -f "${AHK_EXECUTABLE}" ]]; then
     echo "Downloading AutoHotkey ${AUTOHOTKEY_VERSION}..."
     curl --fail --location --silent --show-error "${DOWNLOAD_URL}" --output "${ARCHIVE_PATH}"
     ACTUAL_SHA256="$(sha256sum "${ARCHIVE_PATH}" | awk '{print $1}')"
-    if [[ "${ACTUAL_SHA256}" != "${AUTOHOTKEY_SHA256}" ]]; then
+    # sha256sum may emit lowercase hex; normalize both values before comparing.
+    if [[ "${ACTUAL_SHA256,,}" != "${AUTOHOTKEY_SHA256,,}" ]]; then
         rm -f "${ARCHIVE_PATH}"
         echo "AutoHotkey archive checksum verification failed." >&2
         exit 1
