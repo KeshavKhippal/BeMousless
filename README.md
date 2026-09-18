@@ -19,7 +19,7 @@ The easiest Windows path installs the pinned AutoHotkey v1.1 runtime first, down
 ### Windows PowerShell
 
 ```powershell
-irm https://raw.githubusercontent.com/KeshavKhippal/BeMousless/main/bootstrap.ps1 -OutFile "$env:TEMP\BeMousless-bootstrap.ps1"; powershell -ExecutionPolicy Bypass -File "$env:TEMP\BeMousless-bootstrap.ps1"
+Invoke-WebRequest -UseBasicParsing -Uri https://raw.githubusercontent.com/KeshavKhippal/BeMousless/main/bootstrap.ps1 -OutFile "$env:TEMP\BeMousless-bootstrap.ps1"; powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$env:TEMP\BeMousless-bootstrap.ps1"
 ```
 
 Requirements: Windows, PowerShell, an internet connection, and a numeric keypad. The bootstrap downloads and verifies AutoHotkey `1.1.37.02` first, then downloads the repository to `%LOCALAPPDATA%\BeMousless\source` and launches it. It does not require administrator access.
