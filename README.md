@@ -45,7 +45,7 @@ Press `Numpad0 + Right` to enable or disable mouse mode. The mode tooltip also s
 | `Numpad7/8/9`, `4/6`, `1/2/3` | Move the cursor |
 | `Numpad5` | Left click, or drop a held item |
 | `Numpad0` | Right click |
-| `NumpadAdd` / `NumpadSub` | Scroll up/down |
+| `NumpadSub` / `NumpadAdd` | Scroll up/down |
 | `NumpadDot` while moving | Precision movement |
 | `Numpad0 + NumpadDot` | Orbit around the current point |
 | `Ctrl + Numpad1/2/3/4/6/7/8/9` | Select and hold while moving |
