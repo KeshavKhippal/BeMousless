@@ -29,12 +29,12 @@ The bootstrap is the recommended end-user command. It downloads a script from th
 ### Linux
 
 ```bash
-repo="https://github.com/KeshavKhippal/BeMousless.git"; folder="BeMousless"; git clone "$repo" "$folder"; cd "$folder"; bash ./install.sh
+curl -fsSL https://raw.githubusercontent.com/KeshavKhippal/BeMousless/main/bootstrap-linux.sh | bash
 ```
 
-The installer supports Debian/Ubuntu (`apt`), Fedora (`dnf`), and Arch (`pacman`). It installs Wine, `curl`, and `unzip` with `sudo` when required, verifies the pinned AutoHotkey archive, and starts it through Wine.
+This single command installs Wine, `curl`, `unzip`, and checksum tools through the detected package manager, downloads the BeMousless repository, installs and verifies AutoHotkey `1.1.37.02` through Wine, and starts the script. It supports Debian/Ubuntu (`apt`), Fedora (`dnf`), and Arch (`pacman`), and uses `sudo` when required.
 
-Linux requires a graphical desktop session and a working numeric keypad. AutoHotkey is Windows software, so Linux behavior depends on Wine and the desktop environment.
+Requirements: a graphical Linux desktop session, a working numeric keypad, `curl` or `wget` to start the bootstrap command, and permission to use `sudo` for dependency installation. AutoHotkey is Windows software, so Linux behavior depends on Wine and the desktop environment.
 
 ## Controls
 
@@ -91,6 +91,7 @@ powershell -ExecutionPolicy Bypass -File .\setup.ps1 -NoLaunch
 
 - `BeMousless.ahk`: the controller itself
 - `bootstrap.ps1`: one-command Windows installer, repository downloader, and launcher
+- `bootstrap-linux.sh`: one-command Linux dependency installer, repository downloader, and launcher
 - `setup.ps1`: Windows installer and launcher
 - `install.sh`: Linux dependency installer and Wine launcher
 - `.tools/`: downloaded runtime files, ignored by Git
