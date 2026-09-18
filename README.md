@@ -14,15 +14,17 @@ Control the mouse from the numeric keypad with AutoHotkey v1. BeMousless support
 
 ## Quick start
 
-These commands clone the public repository and start BeMousless.
+The easiest Windows path installs the pinned AutoHotkey v1.1 runtime first, downloads BeMousless, and starts it automatically. It does not require Git.
 
 ### Windows PowerShell
 
 ```powershell
-$repo = "https://github.com/KeshavKhippal/BeMousless.git"; $folder = "BeMousless"; git clone $repo $folder; Set-Location $folder; powershell -ExecutionPolicy Bypass -File .\setup.ps1
+irm https://raw.githubusercontent.com/KeshavKhippal/BeMousless/main/bootstrap.ps1 -OutFile "$env:TEMP\BeMousless-bootstrap.ps1"; powershell -ExecutionPolicy Bypass -File "$env:TEMP\BeMousless-bootstrap.ps1"
 ```
 
-Requirements: Windows, PowerShell, Git, and a numeric keypad. The installer downloads and verifies AutoHotkey `1.1.37.02` into `.tools`; it does not install AutoHotkey globally and does not require administrator access.
+Requirements: Windows, PowerShell, an internet connection, and a numeric keypad. The bootstrap downloads and verifies AutoHotkey `1.1.37.02` first, then downloads the repository to `%LOCALAPPDATA%\BeMousless\source` and launches it. It does not require administrator access.
+
+The bootstrap is the recommended end-user command. It downloads a script from this repository, so review the script at [bootstrap.ps1](bootstrap.ps1) if you want to inspect it before running.
 
 ### Linux
 
@@ -88,11 +90,12 @@ powershell -ExecutionPolicy Bypass -File .\setup.ps1 -NoLaunch
 ## Files and security
 
 - `BeMousless.ahk`: the controller itself
+- `bootstrap.ps1`: one-command Windows installer, repository downloader, and launcher
 - `setup.ps1`: Windows installer and launcher
 - `install.sh`: Linux dependency installer and Wine launcher
 - `.tools/`: downloaded runtime files, ignored by Git
 
-Both installers pin AutoHotkey `1.1.37.02` and verify its SHA-256 checksum before extraction. The scripts download only from the official AutoHotkey GitHub release URL.
+The Windows installers pin AutoHotkey `1.1.37.02` and verify its SHA-256 checksum before extraction. The runtime comes from the official AutoHotkey GitHub release URL. The bootstrap source comes from the BeMousless GitHub repository.
 
 ## Troubleshooting
 
